@@ -1,0 +1,2 @@
+# stratified
+Stratified homotopy theory
