@@ -1,0 +1,228 @@
+%!TEX root = rootfile.tex
+% chktex-file 3
+% chktex-file 8
+% chktex-file 12
+% chktex-file 24
+% chktex-file 42
+
+Our work here stems from a general principle: if $ X $ is a (nice) geometric object (a topological space, a variety, \emph{etc}.), then a suitable class $ A $ of sheaves on $ X $ determines and is determined by a certain \enquote{homotopy type} $ X_A $ attached to $ X $.
+The larger the class $ A $, the finer we can expect the homotopy type $ X_A $ to be.
+
+In this introduction, our aim is to examine this principle in a four relatively familiar situations:
+\begin{itemize}
+	\item when $ X $ is a topological space, and $ A $ is the family of all sheaves;
+	\item when $ X $ is a topological space, and $ A $ is the family of constant sheaves;
+	\item when $ X $ is a topological space, and $ A $ is the family of locally constant sheaves;
+	\item when $ X $ is a scheme, and $ A $ is the family of locally constant étale sheaves. 
+\end{itemize}
+In these circumstances, the object $ X_A $ is a homotopy type (or piece thereof) in more or less the usual sense.
+
+In the body of this text, we will study two further situations:
+\begin{itemize}
+	\item when $ X $ is a stratified topological space, and $ A $ is the family of constructible sheaves;
+	\item when $ X $ is a scheme, and $ A $ is the family of constructible sheaves.
+\end{itemize}
+In these situations, the object $ X_A $ will be a \emph{stratified homotopy type}.
+We will see that this is a dramatically different object, but it comes with much finer information about the structure of $ X $.
+
+\subsection{Notes on sobriety}%
+\label{sub:notes_on_sobriety}
+
+The most elementary illustration of the principle above is the consideration of topological spaces $ X $ that can be recovered from their entire categories of sheaves.
+These are called the \emph{sober} topological spaces.
+
+\begin{dfn}
+	Let $ X $ be a topological space.
+	A closed subset $ Z \subseteq X $ is \defn{irreducible} if and only if it is nonempty and if, for any closed subsets $ Z_1, Z_2 \subseteq X $ such that $ Z = Z_1 \cup Z_2 $, either $ Z = Z_1 $ or $ Z = Z_2 $.
+	Dually, an open subset $ U \subset X $ is \defn{irreducibly open} if and only if it is proper and if, for any open subsets $ U_1, U_2 \subseteq X $ such that $ U_1 \cap U_2 \subseteq U $, either $ U_1 \subseteq U $ or $ U_2 \subseteq U $.
+\end{dfn}
+
+\begin{exm}
+	If $ X $ is a topological space with a point $ x \in X $, then the closure $ \overline{x} $ is irreducible.
+	In this case, one says that $ x $ is a \defn{generic point} of $ X $.
+	The union of all the open subsets that do not contain $ x $ is irreducibly open.
+\end{exm}
+
+\begin{dfn}
+	Let $ X $ be a topological space, and let $ I $ be the set of irreducible closed subsets of $ X $.
+	Then we say that $ X $ is \defn{sober} if the map $ X \to I $ given by $ x \mapsto \overline{x} $ is a bijection;
+	that is, $ X $ is sober if and only if every irreducible closed subset of $ X $ has a unique generic point.
+\end{dfn}
+
+\begin{nul}
+	Sober topological spaces are always Kolmogoroff
+	(\textit{i.e.}, any distinct points are topologically distinguishable).
+	In fact, Kolmogoroff topological spaces are exactly those with the property that the map $ x \mapsto \overline{x} $ is an injection.
+\end{nul}
+
+\begin{cnstr}
+	 
+\end{cnstr}
+
+\subsection*{Connectedness and constant sheaves}
+
+Let us begin by understanding the nature of connectedness.
+
+\begin{ntn}
+	We well begin by contemplating sheaves of \emph{sets} on topological spaces.
+	For any topological space $ X $, let $ \widetilde{X}_{\leq 0} $ be the category of sheaves of sets on $ X $.
+	(Eventually, we shall have to consider sheaves of \emph{spaces} on $ X $, and we are saving the notation $ \widetilde{X} $ for that.)
+\end{ntn}
+
+\begin{dfn}
+	The \defn{constant sheaf} at a set $ S $ on a topological space $ X $ is the sheafification of the constant presheaf $ U \mapsto S $.
+\end{dfn}
+
+\begin{nul}
+	The formation of the constant sheaf defines a left exact left adjoint
+	\[
+		\Gammaupperstar_X \colon \Set \to \widetilde{X}_{\leq 0} \period
+	\]
+	Its right adjoint $ \Gamma_{X, \ast} $ is the formation of global sections $ F \mapsto F(X) $.
+\end{nul}
+
+\begin{nul}
+	For any topological space $ X $, any set $ S $, and any point $ x \in X $, the stalk of the constant sheaf $ \Gammaupperstar_X (S) $ at $ X $ is canonically isomorphic to $ S $.
+
+	Indeed, $ x^{\ast} \Gammaupperstar_X $ is a left exact left adjoint from $ \Set $ to itself;
+	such a functor is isomorphic in a unique fashion to the identity.
+\end{nul}
+
+\begin{exm}
+	Constant sheaves are not constant as presheaves.
+	Indeed, let $ X $ be the discrete space $ \{ 0, 1 \} $, and let $ S $ be any set.
+	Then the constant sheaf at $ S $ on $ X $ certainly has the property that its values on $ \{ 0 \} $ and $ \{ 1 \} $ are each the set $ S $, but now the sheaf condition requires that the global sections are given by
+	\[
+		\Gamma_{X, \ast} \Gammaupperstar_X (S) = \Gammaupperstar_X (S) \{0,1\} \cong \Gammaupperstar_X (S) \{ 0 \} \times \Gammaupperstar_X (S) \{ 1 \} \cong S \times S \period
+	\]
+	If $ S $ has at least two elements, then it follows that $ \Gammaupperstar_X (S) $ is not constant as a presheaf.
+\end{exm}
+
+The previous example does illustrate a general principle:
+
+\begin{lem}
+	Let $ X $ be a discrete topological space, and let $ S $ be a set.
+	Then $ \Gamma_{X, \ast} \Gammaupperstar_X ( S ) \cong \Map(X, S ) $. 
+\end{lem}
+
+If we want to understand various constant sheaves, we can do so by coming to grips with the various functor $ \Gamma_{X, \ast} \Gammaupperstar_X \colon \Set \to \Set $ as $ X $ varies.
+The first thing we can notice is that this functor is a left exact accessible functor.
+
+\begin{dfn}
+	A \defn{proöbject} of a category $ C $ with all finite limits is a left exact accessible functor $ C \to \Set $.
+	The category $ \Pro(C) $ of proöbjects is the \emph{opposite} of the full subcategory of $ \Fun(C, \Set) $ spanned by the left exact accessible functors.
+\end{dfn}
+
+\begin{exm}
+	If $ C $ is a category with all finite limits, then the Yoneda embedding provides a fully faithful functor $ \yo \colon C \inclusion \Pro(C) $.
+	Explicitly, if $ X $ is an object of a category $ C $, then the proöbject it defines is $ \Map(X, -) $.
+\end{exm}
+
+\begin{exm}
+	As a matter of terminology, we call the opposite $ A^{\op} $ of a filtered category an \defn{inverse} category;
+	we call a diagram indexed by an inverse category an \defn{inverse system};
+	and we call a limit of an inverse system an \defn{inverse limit}.
+
+	If $ X \colon A^{\op} \to C $ is an inverse system in a category $ C $ with all finite limits, then the limit $ \lim_{\alpha \in A^{\op}} X_{\alpha} $ formed in $ \Fun(C, Set)^{\op} $ is a proöbject;
+	this is the proöbject $ Y \mapsto \colim_{\alpha \in A} \Map(X_{\alpha}, Y) $.
+	Furthermore, \emph{every} proöbject of $ C $ can be formed in such a manner.
+
+	Now if $ X $ and $ Y $ are two proöbjects that are exhibited as limits of inverse systems in this sense, then one has
+	\[
+		\Map_{\Pro(C)}(X, Y) \cong \lim_{\beta \in B^{\op}} \colim_{\alpha \in A} \Map_C(X, Y) \period
+	\]
+\end{exm}
+
+\begin{exm}
+	Let $ X $ be a topological space.
+	We obtain a proset $ \pi^{\toptextit}_0(X) \coloneq \Gamma_{X, \ast}\Gammaupperstar_X $.
+	This defines a functor from topological spaces to prosets.
+
+	More generally, this is a functor from topoi to prosets:
+	this carries a topos $ \XX $ to the composite
+	\[
+		\pi_0(\XX) \coloneq \Gamma_{\XX, \ast} \Gammaupperstar_{\XX} \colon \Set \to \XX \to \Set \period
+	\]
+\end{exm}
+
+Our claim is that the proset $ \pi_0^{\toptextit}(X) $ is closely related to -- and even identifiable with -- the set $ \pi_0(X) $.
+For a relatively nice class of topological spaces, $ \pi_0(X) $ has a simple universal property.
+
+\begin{nul}
+	Let us consider the category $ \Top^{\textit{ng}} $ of \defn{numerically generated} topological spaces -- these are topological spaces $ X $ with the property that a subset $ U \subseteq X $ is open if and only if, for any continuous map $ \gamma \colon \RR^n \to X $, the set $ gamma^{-1} U $ is open.
+	
+	Of course any discrete space is numerically generated, so the assignment $ S \mapsto S^{\disc} $ is a functor $ \Set \to \Top^{\textit{ng}} $.
+	This functor has a left adjoint, $ \pi_0 \colon \Top^{\textit{ng}} $;
+	in other words, for any numerically generated topological space $ X $, the continuous maps $ X \to S^{\disc} $ are in bijective correspondence with the maps $ \pi_0(X) \to S $.
+\end{nul}
+
+For any \defn{numerically generated} topological space $ X $ 
+
+\begin{dfn}
+	A morphism of topoi $ \plowerstar \colon \XX \to \YY $ is \defn{étale} if and only if the left adjoint $ \pupperstar $ admits a further left adjoint $ \plowershriek $ that identifies $ \XX $ with the overcategory $ \YY_{/\plowershriek(1_{\XX})} $.
+\end{dfn}
+
+\begin{cnstr}
+	Let $ \XX $ and $ \YY $ be topoi, and let $ f_{\ast} \colon \XX \to \YY $ be a geometric morphism.
+	Let $ U \in \YY $ be an object, and let $ \alpha \colon 1_{\XX} \to f^{\ast} U $ be a morphism of $ \XX $.
+	Define a functor $ F^{\ast} \colon \YY_{/U} \to \XX $ that carries an object $ [ V \to U ] $ of $ \YY_{/U} $ to the object $ 1_{\XX} \times_{f^{\ast} U} f^{\ast} V $;
+	this functor admits a right adjoint $ F_{\ast} $, which is a morphism of topoi.
+	If we write $ \plowerstar \colon \YY_{/U} \to \YY $ for the canonical étale morphism, then we have an isomorphism $ \fupperstar \cong F^{\ast} \circ \pupperstar $, and
+	it is a tedious but routine check to confirm that this defines a functor
+	\[
+		\Map_{\XX}(1_{\XX}, \fupperstar U) \to \Fun_{\ast,/\XX}(\XX, \YY_{/U}) \period
+	\]
+\end{cnstr}
+
+\subsection*{Monodromy representations}
+\begin{dfn}
+	Let $ X $ be a topological space.
+
+	A  \defn{locally constant sheaf} of sets $ L $ is a sheaf for which there exists an open cover $ \{ U_{\alpha} \}_{\alpha \in A} $ such that for any $ \alpha \in A $, the sheaf $ L | U_{\alpha} $ is constant on $ U_{\alpha} $.
+	We will call such an open cover a \defn{trivialising} open cover of $ X $ for $ L $.
+
+	A \defn{local system} is a locally constant sheaf for which there is a finite trivialising open cover.
+\end{dfn}
+
+\begin{nul}
+	Let $ X $ be a topological space, and let $ L $ be a locally constant sheaf on $ X $. 
+	Any refinement of a trivialising open cover of $ X $ for $ L $ is again trivialising.
+	Note also that if $ X $ is quasicompact, then any locally constant sheaf is a local system.
+\end{nul}
+
+\begin{exm}
+	Consider the interval $ I \coloneq [0, 1] $.
+	Let $ L $ be a local system on $ I $.
+	A finite trivialising open cover can be refined to a finite trivialising open cover $ \{ U_1, \dots, U_n \} $ in which each $ U_{i} $ is an interval.
+
+	Now let $ U_{i} $ and $ U_{j} $ be two of these intervals;
+	their intersection is either empty or else an inverval.
+	Assume that their intersection is in fact nonempty;
+	then their union is again an interval.
+	Let $ S $ be a set such that $ L | U_{i} $ is constant at $ S $.
+	Since $ U_{i} $ and $ U_{j} $ intersect, it follows that $ L | U_{j} $ is constant at $ S $ as well.
+	The sheaf condition gives an equaliser
+	\[
+		L(U_{i} \cup U_{j}) \to S \times S \parallelto S \times S \times S \times S \comma
+	\]
+	where the top arrow is $ (s, t) \mapsto (s, s, t, t) $ and the bottom arrom is $ (s, t) \mapsto (s, t, s, t) $ which now implies that $ L(U_{i} \cup U_{j}) \cong S $ in a way that is compatible with the restrictions to $ U_{i} $ and $ U_{j} $.
+	Thus we obtain a morphism $ \eta $ from the constant sheaf at $ S $ on $ U_{i} \cup U_{j} $ to the restriction $ L | (U_{i} \cup U_{j}) $
+	that restricts to an isomorphism on $ U_{i} $ and $ U_{j} $.
+	Thus it follows that $ \eta $ is an isomorphism.
+
+	Thus any finite trivialising open cover consisting of $ n > 1$ intervals can be replaced by a finite trivialising open cover consisting of $ n - 1 $ intervals.
+	By induction, it follows that $ I $ itself is a trivialising open cover, whence $ L $ is a constant sheaf.
+
+	We thus conclude that any local system on the interval $ I $ is in fact constant!
+\end{exm}
+
+In the course of this discussion, we encountered some facts that will be useful to us more generally.
+
+\begin{lem}
+	Let $ X $ be a topological space, and let $ F $ be a sheaf of sets on $ X $.
+	Then if $ U $ and $ V $ are open sets such that $ F | U $ and $ F | V $ are constant, then 
+\end{lem}
+
+
+
+
