@@ -44,20 +44,99 @@ These are called the \emph{sober} topological spaces.
 \end{exm}
 
 \begin{dfn}
-	Let $ X $ be a topological space, and let $ I $ be the set of irreducible closed subsets of $ X $.
-	Then we say that $ X $ is \defn{sober} if the map $ X \to I $ given by $ x \mapsto \overline{x} $ is a bijection;
+	Let $ X $ be a topological space, and let $ I(X) $ be the set of irreducible closed subsets of $ X $.
+	Then we say that $ X $ is \defn{sober} if the map $ X \to I(X) $ given by $ x \mapsto \overline{x} $ is a bijection;
 	that is, $ X $ is sober if and only if every irreducible closed subset of $ X $ has a unique generic point.
 \end{dfn}
 
 \begin{nul}
 	Sober topological spaces are always Kolmogoroff
 	(\textit{i.e.}, any distinct points are topologically distinguishable).
-	In fact, Kolmogoroff topological spaces are exactly those with the property that the map $ x \mapsto \overline{x} $ is an injection.
+	Indeed, Kolmogoroff topological spaces are exactly those with the property that the map $ x \mapsto \overline{x} $ is an injection.
 \end{nul}
 
+\begin{exm}
+	Any Hausdorff space is sober.
+\end{exm}
+
+\begin{exm}
+	The Zariski topology of any scheme is sober.
+	In particular, not all sober topological spaces are T1.
+\end{exm}
+
+\begin{exm}
+	The set $ \NN $ with the cofinite topology is T1 but not sober.
+\end{exm}
+
 \begin{cnstr}
-	 
+	Let $ X $ be a topological space, and let $ I(X) $ be the set of irreducible closed subsets thereof.
+	Write $ \gamma $ for the map $ x \mapsto \overline{x} $.
+	We topologise $ I(X) $ with the finest topology such that $ \gamma_X $ is continuous;
+	in other words, a subset $U \subseteq I(X) $ is open if and only if $ \gamma_X^{-1} U $ is open in $ X $.
+	Equivalently, $ U $ is open if and only if there exists an open subset $ V \subseteq X $ such that $ U = \{ F \in I(X) : F \cap V \neq \varnothing \} $.
+
+	Thus $ \gamma $ induces a bijection between the opens of $ I(X) $ and the opens of $ X $, and $ I(X) $ is sober.
+	
+	The assignment $ X \mapsto I(X) $ along with the natural transformation $ \gamma $ together define a left adjoint to the forgetful functor from sober topological spaces to all topological spaces.
+	Thus one may \defn{sober up} any topological space $ X $.
 \end{cnstr}
+
+Now let us demonstrate that a sober space is completely controlled by its lattice of open sets.
+
+\begin{ntn}
+	Let $ X $ be a topological space.
+	Then we write $ \Omega(X) $ for the poset of open subsets of $ X $;
+	this is a complete lattice.
+	If $ Y $ is also a topological space, then we write $ \Map^{\textit{cl}}(\Omega(Y), \Omega(X)) $ for the set of \emph{complete lattice homomorphisms} -- monotonic maps $ \Omega(Y) \to \Omega(X) $ that preserve finite intersections and arbitrary unions.
+\end{ntn}
+
+\begin{prp}
+	Let $ X $ and $ Y $ be sober topological spaces;
+	Then the assignment $ f \mapsto f^{-1} $ is a bijection
+	\[
+		\Map(X, Y) \equivalence \Map^{\textit{cl}}(\Omega(Y), \Omega(X)) \period
+	\]
+\end{prp}
+
+\begin{proof}
+	Let $ F \colon \Omega(Y) \to \Omega(X) $ be a monotonic map that preserves finite intersections and arbitrary unions.
+	Now let us define a map $ f \colon X \to Y $: let $ x \in X $.
+	For each of $ X $ and $ Y $, the points are in bijection with the irreducible closed subsets, which are in turn in bijection with the irreducibly open subsets.
+	Now the map $ F $ induces a map from the irreducibly open subsets of $ X $ to those of $ Y $:
+	this map carries an irreducible open $ U \subseteq X $ to the largest open $ V \subseteq Y $ such that $ F(V) \subseteq U $.
+	Following these bijections, we obtain a unique map $ f $ with the property that $ f^{-1} = F $.
+	
+	To be explicit, let $ V \in \Omega(Y) $ be the largest open subset such that $ x \notin F(V) $.
+	This subset is irreducibly open, and so its complement is an irreducible closed.
+	The value $ f(x) $ is the unique generic point of $ Y \smallsetminus V $.
+\end{proof}
+
+This provides a fully faithful embedding of sober topological spaces into complete lattices.
+We now show that this provides a similar fully faithful embedding of sober topological spaces into topoi.
+
+\begin{ntn}
+	Let $ X $ be a topological space.
+	We shall write $ \widetilde{X}_{\leq 0} $ for the topos of sheaves of sets on $ X $.
+	(This notation may seem a little strange, but soon we will have to contend with sheaves of \emph{spaces} on $ X $, and we are reserving this notation for that notion.)
+
+	For any two topoi $ \XX $ and $ \YY $, we write $ \Funlowerstar( \XX, \YY ) $ for the category whose objects are geometric morphisms $ f_{\ast} \colon \XX \to \YY $ and whose morphisms are natural transformations $ f_{\ast} \to g_{\ast} $.
+\end{ntn}
+
+\begin{nul}
+	If $ X $ is a topological space, then we can recover $ \Omega(X) $ from $ \widetilde{X}_{\leq 0} $ as the poset of subobjects of the terminal object $1_{\widetilde{X}_{\leq 0}}$.
+	Now we can make the following little observation: if $ X $ and $ Y $ are topological spaces, then the left adjoint of a geometric morphism $ f_{\ast} \colon \widetilde{X}_{\leq 0} \to \widetilde{Y}_{\leq 0} $ restricts to a complete lattice homomorphism $ \Omega(X) \to \Omega(Y) $.
+	This is an inverse to the obvious functor $ \Map^{\textit{cl}}(\Omega(Y), \Omega(X)) \to \Funlowerstar(\widetilde{X}_{\leq 0}, \widetilde{Y}_{\leq 0})$.
+
+	In particular, please observe that the geometric morphisms $ \widetilde{X}_{\leq 0} \to \widetilde{Y}_{\leq 0} $ form a discrete category.
+\end{nul}
+
+\begin{cor}
+	Let $ X $ and $ Y $ be sober topological spaces.
+	Then the assignment $ f \mapsto f_{\ast} $ is an equivalence of categories
+	\[
+		\Map(X, Y) \equivalence \Funlowerstar(\widetilde{X}_{\leq 0}, \widetilde{Y}_{\leq 0}) \period
+	\]
+\end{cor}
 
 \subsection*{Connectedness and constant sheaves}
 
