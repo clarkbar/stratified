@@ -10,7 +10,7 @@ The larger the class $ A $, the finer we can expect the homotopy type $ X_A $ to
 
 In this introduction, our aim is to examine this principle in a four relatively familiar situations:
 \begin{itemize}
-	\item when $ X $ is a topological space, and $ A $ is the family of all sheaves;
+	\item when $ X $ is a topological space, and $ A $ is the family of all sheaves (\Cref{sub:notes_on_sobriety});
 	\item when $ X $ is a topological space, and $ A $ is the family of constant sheaves;
 	\item when $ X $ is a topological space, and $ A $ is the family of locally constant sheaves;
 	\item when $ X $ is a scheme, and $ A $ is the family of locally constant étale sheaves. 
@@ -25,8 +25,12 @@ In the body of this text, we will study two further situations:
 In these situations, the object $ X_A $ will be a \emph{stratified homotopy type}.
 We will see that this is a dramatically different object, but it comes with much finer information about the structure of $ X $.
 
+%-------------------------------------------------------------------%
+%-------------------------------------------------------------------%
 \subsection{Notes on sobriety}%
 \label{sub:notes_on_sobriety}
+%-------------------------------------------------------------------%
+%-------------------------------------------------------------------%
 
 The most elementary illustration of the principle above is the consideration of topological spaces $ X $ that can be recovered from their entire categories of sheaves.
 These are called the \emph{sober} topological spaces.
@@ -38,21 +42,21 @@ These are called the \emph{sober} topological spaces.
 \end{dfn}
 
 \begin{exm}
-	If $ X $ is a topological space with a point $ x \in X $, then the closure $ \overline{x} $ is irreducible.
+	If $ X $ is a topological space with a point $ x \in X $, then the closure $ \xbar $ is irreducible.
 	In this case, one says that $ x $ is a \defn{generic point} of $ X $.
 	The union of all the open subsets that do not contain $ x $ is irreducibly open.
 \end{exm}
 
 \begin{dfn}
 	Let $ X $ be a topological space, and let $ I(X) $ be the set of irreducible closed subsets of $ X $.
-	Then we say that $ X $ is \defn{sober} if the map $ X \to I(X) $ given by $ x \mapsto \overline{x} $ is a bijection;
+	Then we say that $ X $ is \defn{sober} if the map $ X \to I(X) $ given by $ x \mapsto \xbar $ is a bijection;
 	that is, $ X $ is sober if and only if every irreducible closed subset of $ X $ has a unique generic point.
 \end{dfn}
 
 \begin{nul}
 	Sober topological spaces are always Kolmogoroff
 	(\textit{i.e.}, any distinct points are topologically distinguishable).
-	Indeed, Kolmogoroff topological spaces are exactly those with the property that the map $ x \mapsto \overline{x} $ is an injection.
+	Indeed, Kolmogoroff topological spaces are exactly those with the property that the map $ x \mapsto \xbar $ is an injection.
 \end{nul}
 
 \begin{exm}
@@ -65,12 +69,12 @@ These are called the \emph{sober} topological spaces.
 \end{exm}
 
 \begin{exm}
-	The set $ \NN $ with the cofinite topology is T1 but not sober.
+	The set $ \NN $ of natural numbers, when equipped with the cofinite topology, is T1 but not sober.
 \end{exm}
 
 \begin{cnstr}
 	Let $ X $ be a topological space, and let $ I(X) $ be the set of irreducible closed subsets thereof.
-	Write $ \gamma $ for the map $ x \mapsto \overline{x} $.
+	Write $ \gamma $ for the map $ x \mapsto \xbar $.
 	We topologise $ I(X) $ with the finest topology such that $ \gamma_X $ is continuous;
 	in other words, a subset $U \subseteq I(X) $ is open if and only if $ \gamma_X^{-1} U $ is open in $ X $.
 	Equivalently, $ U $ is open if and only if there exists an open subset $ V \subseteq X $ such that $ U = \{ F \in I(X) : F \cap V \neq \varnothing \} $.
@@ -119,12 +123,12 @@ We now show that this provides a similar fully faithful embedding of sober topol
 	We shall write $ \widetilde{X}_{\leq 0} $ for the topos of sheaves of sets on $ X $.
 	(This notation may seem a little strange, but soon we will have to contend with sheaves of \emph{spaces} on $ X $, and we are reserving this notation for that notion.)
 
-	For any two topoi $ \XX $ and $ \YY $, we write $ \Funlowerstar( \XX, \YY ) $ for the category whose objects are geometric morphisms $ f_{\ast} \colon \XX \to \YY $ and whose morphisms are natural transformations $ f_{\ast} \to g_{\ast} $.
+	For any two topoi $ \XX $ and $ \YY $, we write $ \Funlowerstar( \XX, \YY ) $ for the category whose objects are geometric morphisms $ \flowerstar \colon \XX \to \YY $ and whose morphisms are natural transformations $ \flowerstar \to g_{\ast} $.
 \end{ntn}
 
 \begin{nul}
 	If $ X $ is a topological space, then we can recover $ \Omega(X) $ from $ \widetilde{X}_{\leq 0} $ as the poset of subobjects of the terminal object $1_{\widetilde{X}_{\leq 0}}$.
-	Now we can make the following little observation: if $ X $ and $ Y $ are topological spaces, then the left adjoint of a geometric morphism $ f_{\ast} \colon \widetilde{X}_{\leq 0} \to \widetilde{Y}_{\leq 0} $ restricts to a complete lattice homomorphism $ \Omega(X) \to \Omega(Y) $.
+	Now we can make the following little observation: if $ X $ and $ Y $ are topological spaces, then the left adjoint of a geometric morphism $ \flowerstar \colon \widetilde{X}_{\leq 0} \to \widetilde{Y}_{\leq 0} $ restricts to a complete lattice homomorphism $ \Omega(X) \to \Omega(Y) $.
 	This is an inverse to the obvious functor $ \Map^{\textit{cl}}(\Omega(Y), \Omega(X)) \to \Funlowerstar(\widetilde{X}_{\leq 0}, \widetilde{Y}_{\leq 0})$.
 
 	In particular, please observe that the geometric morphisms $ \widetilde{X}_{\leq 0} \to \widetilde{Y}_{\leq 0} $ form a discrete category.
@@ -132,13 +136,18 @@ We now show that this provides a similar fully faithful embedding of sober topol
 
 \begin{cor}
 	Let $ X $ and $ Y $ be sober topological spaces.
-	Then the assignment $ f \mapsto f_{\ast} $ is an equivalence of categories
+	Then the assignment $ f \mapsto \flowerstar $ is an equivalence of categories
 	\[
 		\Map(X, Y) \equivalence \Funlowerstar(\widetilde{X}_{\leq 0}, \widetilde{Y}_{\leq 0}) \period
 	\]
 \end{cor}
 
-\subsection*{Connectedness and constant sheaves}
+%-------------------------------------------------------------------%
+%-------------------------------------------------------------------%
+\subsection{Connectedness and constant sheaves}%
+\label{sub:connectedness_and_constant_sheaves}
+%-------------------------------------------------------------------%
+%-------------------------------------------------------------------%
 
 Let us begin by understanding the nature of connectedness.
 
@@ -179,13 +188,16 @@ Let us begin by understanding the nature of connectedness.
 
 The previous example does illustrate a general principle:
 
-\begin{lem}
+\begin{lem}\label{asetisitsownshape}
 	Let $ X $ be a discrete topological space, and let $ S $ be a set.
 	Then $ \Gamma_{X, \ast} \Gammaupperstar_X ( S ) \cong \Map(X, S ) $. 
 \end{lem}
 
-If we want to understand various constant sheaves, we can do so by coming to grips with the various functor $ \Gamma_{X, \ast} \Gammaupperstar_X \colon \Set \to \Set $ as $ X $ varies.
-The first thing we can notice is that this functor is a left exact accessible functor.
+Thus in the discrete case, the endofunctor $ \Gamma_{X, \ast} \Gammaupperstar_X \colon \Set \to \Set $ is actually representable.
+This lemma triggers a thought:
+If we want to understand various constant sheaves, we can do so by coming to grips with the various functors $ \Gamma_{X, \ast} \Gammaupperstar_X \colon \Set \to \Set $ as $ X $ varies.
+The first thing we can notice is that this functor, though not always representable as in \Cref{asetisitsownshape}, is always \emph{prorepresentable};
+in other words, it is a left exact accessible functor.
 
 \begin{dfn}
 	A \defn{proöbject} of a category $ C $ with all finite limits is a left exact accessible functor $ C \to \Set $.
@@ -228,32 +240,99 @@ Our claim is that the proset $ \pi_0^{\toptextit}(X) $ is closely related to -- 
 For a relatively nice class of topological spaces, $ \pi_0(X) $ has a simple universal property.
 
 \begin{nul}
-	Let us consider the category $ \Top^{\textit{ng}} $ of \defn{numerically generated} topological spaces -- these are topological spaces $ X $ with the property that a subset $ U \subseteq X $ is open if and only if, for any continuous map $ \gamma \colon \RR^n \to X $, the set $ gamma^{-1} U $ is open.
+	Let us consider the category $ \Top^{\textit{ng}} $ of \defn{numerically generated} topological spaces -- these are topological spaces $ X $ with the property that a subset $ U \subseteq X $ is open if and only if, for any continuous map $ \phi \colon \RR^n \to X $, the set $ \phi^{-1} U $ is open.
 	
 	Of course any discrete space is numerically generated, so the assignment $ S \mapsto S^{\disc} $ is a functor $ \Set \to \Top^{\textit{ng}} $.
-	This functor has a left adjoint, $ \pi_0 \colon \Top^{\textit{ng}} $;
+	This functor has a left adjoint, $ \pi_0 \colon \Top^{\textit{ng}} \to \Set $;
 	in other words, for any numerically generated topological space $ X $, the continuous maps $ X \to S^{\disc} $ are in bijective correspondence with the maps $ \pi_0(X) \to S $.
 \end{nul}
 
-For any \defn{numerically generated} topological space $ X $ 
-
+Now we aim to prove the analogous universal property for the topos-theoretic $\pi_0 $.
+For this, we need to understand a little about slice topoi.
+The following definition is not entirely necessary for our purposes right now, but the ideas will reappear later:
 \begin{dfn}
 	A morphism of topoi $ \plowerstar \colon \XX \to \YY $ is \defn{étale} if and only if the left adjoint $ \pupperstar $ admits a further left adjoint $ \plowershriek $ that identifies $ \XX $ with the overcategory $ \YY_{/\plowershriek(1_{\XX})} $.
 \end{dfn}
 
+\begin{ntn}
+	Let $ \XX $ and $ \YY $ be topoi, and let $ U \in \YY $ be an object.
+	We write $ \plowerstar \colon \YY_{/U} \to \YY $ for the étale geometric morphism.
+	In the presence of a geometric morphism $ \flowerstar \colon \XX \to \YY $, we define the category $ \Fun_{\ast,\YY}(\XX, \YY_{/U}) $ of pairs $ (\Flowerstar, \beta) $ consisting of a geometric morphism $ \Flowerstar \colon \XX \to \YY_{/U} $ along with an isomorphism $ \beta \colon \flowerstar \equivalence \plowerstar \circ \Flowerstar $.
+\end{ntn}
+
 \begin{cnstr}
-	Let $ \XX $ and $ \YY $ be topoi, and let $ f_{\ast} \colon \XX \to \YY $ be a geometric morphism.
-	Let $ U \in \YY $ be an object, and let $ \alpha \colon 1_{\XX} \to f^{\ast} U $ be a morphism of $ \XX $.
-	Define a functor $ F^{\ast} \colon \YY_{/U} \to \XX $ that carries an object $ [ V \to U ] $ of $ \YY_{/U} $ to the object $ 1_{\XX} \times_{f^{\ast} U} f^{\ast} V $;
-	this functor admits a right adjoint $ F_{\ast} $, which is a morphism of topoi.
-	If we write $ \plowerstar \colon \YY_{/U} \to \YY $ for the canonical étale morphism, then we have an isomorphism $ \fupperstar \cong F^{\ast} \circ \pupperstar $, and
-	it is a tedious but routine check to confirm that this defines a functor
+	Let $ \XX $ and $ \YY $ be topoi, and let $ \flowerstar \colon \XX \to \YY $ be a geometric morphism.
+	Let $ U \in \YY $ be an object, and let $ \alpha \colon 1_{\XX} \to \fupperstar U $ be a morphism of $ \XX $.
+	Define a functor $ \Fupperstar(\alpha) \colon \YY_{/U} \to \XX $ that carries an object $ [ V \to U ] $ of $ \YY_{/U} $ to the object $ 1_{\XX} \times_{\fupperstar U} \fupperstar V $;
+	this functor admits a right adjoint $ \Flowerstar(\alpha) $, which is a morphism of topoi.
+	If we write $ \plowerstar \colon \YY_{/U} \to \YY $ for the canonical étale morphism, then we have an isomorphism $ \fupperstar \cong \Fupperstar(\alpha) \circ \pupperstar $, and
+	this defines a functor
 	\[
 		\Map_{\XX}(1_{\XX}, \fupperstar U) \to \Fun_{\ast,/\XX}(\XX, \YY_{/U}) \period
 	\]
+
+	In the other direction, let $ \Flowerstar \colon \XX \to \YY_{/U} $ be a geometric morphism over $ \YY $.
+	The diagonal morphism $ U \to U \times U \cong \pupperstar U $ in $ \YY_{/U} $ can then be pulled back along this geometric morphism to obtain a morphism
+	\[
+		\alpha_{\Flowerstar} \colon 1_{\XX} \cong \Fupperstar U \to \Fupperstar(U \times U) \cong \fupperstar U
+	\]
+	of $ \XX $.
+
+	These constructions are inverse to one another: the natural transformation $ \alpha $ above can be identified with the natural transformation $ \alpha_{\Flowerstar(\alpha)} $, and
+	to identify $ \Flowerstar $ with $ \Flowerstar(\alpha_{\Flowerstar}) $, the main point is that one must observe that for any object $ V $ in $ \YY_{/U} $, the square
+	\begin{equation*}
+		\begin{tikzcd}
+			V \ar[d] \ar[r] & V \times U \ar[d] \\
+			U \ar[r] & U \times U
+		\end{tikzcd}
+	\end{equation*}
+	is a pullback square in $ \YY_{/U} $, and so one obtains a fomula for $ \Fupperstar $:
+	\[
+		\Fupperstar V \simeq 1_{\XX} \times_{\fupperstar U} \fupperstar V \period
+	\]
+
+	The rather surprising upshot is that $ \Fun_{\ast,/XX}(\XX, \YY_{/U}) $ is in fact discrete (\emph{i.e.}, is equivalent to a set), and one has an equivalence of categories
+	\[
+		\Map_{\XX}(1_{\XX}, \fupperstar U) \equiv \Fun_{\ast,/\XX}(\XX, \YY_{/U}) \period
+	\]
 \end{cnstr}
 
-\subsection*{Monodromy representations}
+\begin{nul}
+	In our case of interest, $ \YY = \Set $, the object $ U $ is a set, and the topos $ \YY_{/U} $ can be identified with the functor category $ \Utilde \coloneq \Fun(U, \Set) $.
+	We now unpack the identification above as
+	\[
+		\Funlowerstar(\XX, \Utilde) \simeq \Map(1_{\XX}, \Gammaupperstar U) \cong \Gammalowerstar\Gammaupperstar U \cong \Map(\pi_0\XX, U) \period
+	\]
+\end{nul}
+
+\begin{thm}
+	If $ X $ is a numerically generated sober topological space, then the proset $ \pi_0^{\toptextit}(X) $ is nothing more than the set $ \pi_0(X) $.
+\end{thm}
+
+\begin{proof}
+	Let $ U $ be a set.
+	Numerical generation gives us
+	\[
+		\Map(X, U^{\disc}) \cong \Map(\pi_0(X), U) \comma
+	\]
+	sobriety gives us
+	\[
+		\Map(X, U^{\disc}) \simeq \Funlowerstar(\Xtilde, \Utilde) \comma
+	\]
+	and the computation above gives us
+	\[
+		\Funlowerstar(\Xtilde, \Utilde) \simeq \Map(\pi^{\toptextit}_0(X), U) \period
+	\]
+	All of these are functorial equivalences, so we conclude.
+\end{proof}
+
+%-------------------------------------------------------------------%
+%-------------------------------------------------------------------%
+\subsection{Monodromy representations}%
+\label{sub:monodromy_representations}
+%-------------------------------------------------------------------%
+%-------------------------------------------------------------------%
+
 \begin{dfn}
 	Let $ X $ be a topological space.
 
@@ -268,6 +347,10 @@ For any \defn{numerically generated} topological space $ X $
 	Any refinement of a trivialising open cover of $ X $ for $ L $ is again trivialising.
 	Note also that if $ X $ is quasicompact, then any locally constant sheaf is a local system.
 \end{nul}
+
+\begin{exm}
+	On a discrete topological space $ S^{\disc} $, there are plenty of nonconstant local systems: in fact any sheaf on $ S^{\disc} $ is locally constant.
+\end{exm}
 
 \begin{exm}
 	Consider the interval $ I \coloneq [0, 1] $.
@@ -289,11 +372,21 @@ For any \defn{numerically generated} topological space $ X $
 	that restricts to an isomorphism on $ U_{i} $ and $ U_{j} $.
 	Thus it follows that $ \eta $ is an isomorphism.
 
-	Thus any finite trivialising open cover consisting of $ n > 1$ intervals can be replaced by a finite trivialising open cover consisting of $ n - 1 $ intervals.
+	Since any $ U_i $ must intersect \emph{some} other $ U_j $, any finite trivialising open cover consisting of $ n > 1$ intervals can be replaced by a finite trivialising open cover consisting of $ n - 1 $ intervals.
 	By induction, it follows that $ I $ itself is a trivialising open cover, whence $ L $ is a constant sheaf.
 
 	We thus conclude that any local system on the interval $ I $ is in fact constant!
 \end{exm}
+
+\begin{ctrexm}
+	Let's take a moment to see that the argument above does not work for the circle $ S^1 $.
+	The easiest example of a nontrivial local system on $ S^1 $ is the sheaf of sections of the Möbius band (and its canonical map to $ S^1 $).
+	This will have a trivialising open cover consisting of two intervals.
+	However, their intersection is a disjoint union of two intervals, and there are nonconstant local systems on these, and so the argument above does not work.
+
+	Here we would like to say that we are exhibiting $ S^1 $ as the homotopy pushout $ \pt \unionlimits^{\pt \cup \pt} \pt $, and we are seeing that pushout reflected somehow in the categories of local systems.
+	That turns out to be true, and it will relate the category of local systems to the fundamental group.
+\end{ctrexm}
 
 In the course of this discussion, we encountered some facts that will be useful to us more generally.
 
